@@ -1,8 +1,8 @@
 require 'json'
 
 module Thumblemonks
-  module Sinatra
-    module Shoulda
+  module Shoulda
+    module Sinatra
 
       def self.included(klass)
         klass.extend(Macros)
@@ -62,8 +62,8 @@ module Thumblemonks
         end
       end # Helpers
 
-    end # Shoulda
-  end # Sinatra
+    end # Sinatra
+  end # Shoulda
 end # Thumblemonks
 
-Test::Unit::TestCase.instance_eval { include Thumblemonks::Sinatra::Shoulda }
+Test::Unit::TestCase.instance_eval { include Thumblemonks::Shoulda::Sinatra }
