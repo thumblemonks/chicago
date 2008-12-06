@@ -9,7 +9,7 @@ class ApplicationTest < Test::Unit::TestCase
       end
 
       should_have_response_status 200
-      should_have_response_body %r[.bar {\s+display: none; }\s]
+      should_have_response_body %r[.bar \{\s+display: none; \}\s]
     end
 
     context "with specified path" do
@@ -18,7 +18,7 @@ class ApplicationTest < Test::Unit::TestCase
       end
 
       should_have_response_status 200
-      should_have_response_body %r[.car {\s+display: some; }\s]
+      should_have_response_body %r[.car \{\s+display: some; \}\s]
     end
   end # catching all css
 
