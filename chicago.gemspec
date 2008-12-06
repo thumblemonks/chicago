@@ -32,7 +32,4 @@ Gem::Specification.new do |s|
     test/responders_test.rb
     test/test_helper.rb
   ]
-
-  s.add_dependency("sinatra", [">= 0.3.1"])
-  s.add_dependency("json", [">= 1.1.3"])
 end
