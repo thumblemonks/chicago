@@ -3,7 +3,7 @@
     It's my kind of town!
     - Sinatra
 
-Yeah, we're real clever.
+Yeah, we're real clever. We're also from ["The city in mid-west best city in the whole wide wide world"](http://www.azlyrics.com/lyrics/lupefiasco/gogogadgetflow.html) ... which makes us double the clever.
 
 ## What what?
 
