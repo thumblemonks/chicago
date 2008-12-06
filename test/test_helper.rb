@@ -24,3 +24,10 @@ catch_all_css('/css')
 template :goo do
   ".car\n  :display some"
 end
+
+# Getting obvious
+
+get_obvious 'baz'
+template :baz do
+  "Whatever man. That's just like, your opinion."
+end

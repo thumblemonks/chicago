@@ -22,4 +22,12 @@ class ApplicationTest < Test::Unit::TestCase
     end
   end # catching all css
 
+  context "getting obvious views" do
+    setup do
+      get_it '/baz'
+    end
+
+    should_have_response_body "Whatever man. That's just like, your opinion."
+  end
+
 end
