@@ -14,9 +14,23 @@ Gem::Specification.new do |s|
 
   # run git ls-files to get an updated list
   s.files = %w[
+    HISTORY.txt
+    MIT-LICENSE
+    README.markdown
+    Rakefile
+    chicago.gemspec
+    lib/chicago.rb
+    lib/chicago/application.rb
+    lib/chicago/helpers.rb
+    lib/chicago/responders.rb
+    lib/chicago/shoulda.rb
+    lib/chicago/shoulda/sinatra.rb
   ]
   
   s.test_files = %w[
+    test/application_test.rb
+    test/responders_test.rb
+    test/test_helper.rb
   ]
 
   s.add_dependency("sinatra", [">= 0.3.1"])
