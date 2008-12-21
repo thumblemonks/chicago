@@ -18,6 +18,10 @@ class HelpersTest < Test::Unit::TestCase
       assert_match %r[type="text/css"], @response.body
       assert_match %r[baz="boo"], @response.body
     end
+
+    should_invoke_helper(:stylesheet_include, 'http://example.com') do
+      assert_match %r[href="http://example.com"], @response.body
+    end
   end # including stylesheets
 
   context "including javascript" do
@@ -32,6 +36,10 @@ class HelpersTest < Test::Unit::TestCase
       assert_match %r[src="/javascripts/foo\.js"], @response.body
       assert_match %r[type="text/blarg"], @response.body
       assert_match %r[gus="nice"], @response.body
+    end
+
+    should_invoke_helper(:javascript_include, 'http://example.com') do
+      assert_match %r[src="http://example.com"], @response.body
     end
   end # including javascript
 

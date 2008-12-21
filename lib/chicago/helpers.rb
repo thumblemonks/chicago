@@ -8,18 +8,24 @@ module Thumblemonks
       end
 
       def stylesheet_include(name, options={})
-        defaults = {:href => "/stylesheets/#{name}.css", :media => "screen",
+        name = "/stylesheets/#{name}.css" unless remote_asset?(name)
+        defaults = {:href => name, :media => "screen",
           :rel => "stylesheet", :type => "text/css"}
         options_str = hash_to_attributes(defaults.merge(options))
         %Q[<link #{options_str}/>]
       end
 
       def javascript_include(name, options={})
-        defaults = {:src => "/javascripts/#{name}.js", :type => "text/javascript"}
+        name = "/javascripts/#{name}.js" unless remote_asset?(name)
+        defaults = {:src => name, :type => "text/javascript"}
         options_str = hash_to_attributes(defaults.merge(options))
         %Q[<script #{options_str}></script>]
       end
     private
+      def remote_asset?(uri)
+        uri =~ %r[^\w+://.+]
+      end
+
       def hash_to_attributes(options)
         options.map {|k,v| "#{k}=\"#{v}\""}.join(' ')
       end
