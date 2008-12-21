@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
 class RespondersTest < Test::Unit::TestCase
-  
+
   context "json response" do
     setup do
       get_it "/json_bait"

@@ -13,6 +13,12 @@ module Thumblemonks
         options_str = hash_to_attributes(defaults.merge(options))
         %Q[<link #{options_str}/>]
       end
+
+      def javascript_include(name, options={})
+        defaults = {:src => "/javascripts/#{name}.js", :type => "text/javascript"}
+        options_str = hash_to_attributes(defaults.merge(options))
+        %Q[<script #{options_str}></script>]
+      end
     private
       def hash_to_attributes(options)
         options.map {|k,v| "#{k}=\"#{v}\""}.join(' ')

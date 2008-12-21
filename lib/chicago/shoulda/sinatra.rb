@@ -1,4 +1,5 @@
 require 'json'
+require 'ostruct'
 
 module Thumblemonks
   module Shoulda
@@ -28,6 +29,20 @@ module Thumblemonks
             json = self.instance_eval(&block) if block_given?
             json = json.to_json unless json.instance_of?(String) || json.instance_of?(Regexp)
             assert_response_body json
+          end
+        end
+
+        # Will invoke a helper method in the EventContext and set the result of
+        # output to @response.body.
+        # 
+        # NOTE: This will probably break right now if you need access to specific
+        # event context methods or Sinatra.app options in your helper.
+        def should_invoke_helper(name, *args, &assert_block)
+          should "invoke helper #{name} with #{args.inspect}" do
+            @response = OpenStruct.new(:body => nil)
+            event_context = ::Sinatra::EventContext.new(nil, @response, nil)
+            @response.body = event_context.send(name, *args)
+            self.instance_eval(&assert_block)
           end
         end
       end # Macros

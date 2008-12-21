@@ -31,3 +31,6 @@ get_obvious 'baz'
 template :baz do
   "Whatever man. That's just like, your opinion."
 end
+
+# Helpers
+
