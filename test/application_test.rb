@@ -9,6 +9,7 @@ class ApplicationTest < Test::Unit::TestCase
       end
 
       should_have_response_status 200
+      should_have_content_type 'text/css'
       should_have_response_body %r[.bar \{\s+display: none; \}\s]
     end
 
@@ -18,6 +19,7 @@ class ApplicationTest < Test::Unit::TestCase
       end
 
       should_have_response_status 200
+      should_have_content_type 'text/css'
       should_have_response_body %r[.car \{\s+display: some; \}\s]
     end
   end # catching all css
