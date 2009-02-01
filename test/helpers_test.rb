@@ -1,57 +1,119 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
 class HelpersTest < Test::Unit::TestCase
-  context "including stylesheets" do
-    should_invoke_helper(:stylesheet_include, 'foo') do
-      assert_match %r[^<link( \w+=".+"){4}/>$], @response.body
-      assert_match %r[href="/stylesheets/foo\.css"], @response.body
-      assert_match %r[media="screen"], @response.body
-      assert_match %r[rel="stylesheet"], @response.body
-      assert_match %r[type="text/css"], @response.body
-    end
+  context "including stylesheet" do
+    context "for plain old foo" do
+      setup do
+        mock_app {
+          template(:foo) { "= stylesheet_include('foo')" }
+          get('/foo') { haml :foo }
+        }
+        get '/foo'
+      end
 
-    should_invoke_helper(:stylesheet_include, 'bar', :media => 'print', :baz => 'boo') do
-      assert_match %r[^<link( \w+=".+"){5}/>$], @response.body
-      assert_match %r[href="/stylesheets/bar\.css"], @response.body
-      assert_match %r[media="print"], @response.body
-      assert_match %r[rel="stylesheet"], @response.body
-      assert_match %r[type="text/css"], @response.body
-      assert_match %r[baz="boo"], @response.body
-    end
+      should_have_response_body %r[^<link( \w+=".+"){4}/>$]
+      should_have_response_body %r[href="/stylesheets/foo\.css"]
+      should_have_response_body %r[media="screen"]
+      should_have_response_body %r[rel="stylesheet"]
+      should_have_response_body %r[type="text/css"]
+    end # for plain old foo
 
-    should_invoke_helper(:stylesheet_include, 'http://example.com') do
-      assert_match %r[href="http://example.com"], @response.body
-    end
+    context "for bar with options" do
+      setup do
+        mock_app {
+          template(:foo) { "= stylesheet_include('bar', :media => 'print', :baz => 'boo')" }
+          get('/foo') { haml :foo }
+        }
+        get '/foo'
+      end
+
+      should_have_response_body %r[^<link( \w+=".+"){5}/>$]
+      should_have_response_body %r[href="/stylesheets/bar\.css"]
+      should_have_response_body %r[media="print"]
+      should_have_response_body %r[rel="stylesheet"]
+      should_have_response_body %r[type="text/css"]
+      should_have_response_body %r[baz="boo"]
+    end # for bar with options
+
+    context "with a specific href" do
+      setup do
+        mock_app {
+          template(:foo) { "= stylesheet_include('http://example.com')" }
+          get('/foo') { haml :foo }
+        }
+        get '/foo'
+      end
+      should_have_response_body %r[href="http://example.com"]
+    end # with a specific href
   end # including stylesheets
 
   context "including javascript" do
-    should_invoke_helper(:javascript_include, 'foo') do
-      assert_match %r[^<script( \w+=".+"){2}></script>$], @response.body
-      assert_match %r[src="/javascripts/foo\.js"], @response.body
-      assert_match %r[type="text/javascript"], @response.body
-    end
+    context "for plain old foo" do
+      setup do
+        mock_app {
+          template(:foo) { "= javascript_include('foo')" }
+          get('/foo') { haml :foo }
+        }
+        get '/foo'
+      end
 
-    should_invoke_helper(:javascript_include, 'foo', :type => "text/blarg", :gus => "nice") do
-      assert_match %r[^<script( \w+=".+"){3}></script>$], @response.body
-      assert_match %r[src="/javascripts/foo\.js"], @response.body
-      assert_match %r[type="text/blarg"], @response.body
-      assert_match %r[gus="nice"], @response.body
-    end
+      should_have_response_body %r[^<script( \w+=".+"){2}></script>$]
+      should_have_response_body %r[src="/javascripts/foo\.js"]
+      should_have_response_body %r[type="text/javascript"]
+    end # for plain old foo
 
-    should_invoke_helper(:javascript_include, 'http://example.com') do
-      assert_match %r[src="http://example.com"], @response.body
-    end
+    context "for foo with options" do
+      setup do
+        mock_app {
+          template(:foo) { "= javascript_include('foo', :type => 'text/blarg', :gus => 'nice')" }
+          get('/foo') { haml :foo }
+        }
+        get '/foo'
+      end
+
+      should_have_response_body %r[^<script( \w+=".+"){3}></script>$]
+      should_have_response_body %r[src="/javascripts/foo\.js"]
+      should_have_response_body %r[type="text/blarg"]
+      should_have_response_body %r[gus="nice"]
+    end # for foo with options
+
+    context "with a specific src" do
+      setup do
+        mock_app {
+          template(:foo) { "= javascript_include('http://example.com')" }
+          get('/foo') { haml :foo }
+        }
+        get '/foo'
+      end
+      should_have_response_body %r[src="http://example.com"]
+    end # with a specific src
   end # including javascript
 
   context "using an anchor" do
-    should_invoke_helper(:anchor, 'foo', '/bar') do
-      assert_equal %Q[<a href="/bar">foo</a>], @response.body
-    end
+    context "for plain old foo" do
+      setup do
+        mock_app {
+          template(:foo) { "= anchor('foo', '/bar')" }
+          get('/foo') { haml :foo }
+        }
+        get '/foo'
+      end
 
-    should_invoke_helper(:anchor, 'foo bear', '/bar/ler', :title => "gus is nice") do
-      assert_match %r[^<a( \w+=".+"){2}>foo bear</a>$], @response.body
-      assert_match %r[href="/bar/ler"], @response.body
-      assert_match %r[title="gus is nice"], @response.body
-    end
+      should_have_response_body %Q[<a href="/bar">foo</a>]
+    end # for plain old foo
+
+    context "with options" do
+      setup do
+        mock_app {
+          template(:foo) { "= anchor('foo bear', '/bar/ler', :title => 'gus is nice')" }
+          get('/foo') { haml :foo }
+        }
+        get '/foo'
+      end
+
+      should_have_response_body %r[^<a( \w+=".+"){2}>foo bear</a>$]
+      should_have_response_body %r[href="/bar/ler"]
+      should_have_response_body %r[title="gus is nice"]
+    end # with options
   end # using an anchor
 end

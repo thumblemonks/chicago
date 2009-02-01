@@ -1,36 +1,19 @@
 require 'rubygems'
 
-require 'sinatra'
-require 'sinatra/test/unit'
 require 'shoulda'
+
+require 'sinatra/base'
+require 'sinatra/test'
+require 'sinatra/test/unit'
 
 require 'chicago'
 require 'chicago/shoulda'
 
-# JSON Stuff
-get "/json_bait" do
-  status(201)
-  json_response({:foo => "bar"})
+module Sinatra::Test
+  # Sets up a Sinatra::Base subclass defined with the block
+  # given. Used in setup or individual spec methods to establish
+  # the application.
+  def mock_app(base=Sinatra::Base, &block)
+    @app = Sinatra.new(base, &block)
+  end
 end
-
-# CSS Stuff
-
-catch_all_css
-template :foo do
-  ".bar\n  :display none"
-end
-
-catch_all_css('/css')
-template :goo do
-  ".car\n  :display some"
-end
-
-# Getting obvious
-
-get_obvious 'baz'
-template :baz do
-  "Whatever man. That's just like, your opinion."
-end
-
-# Helpers
-

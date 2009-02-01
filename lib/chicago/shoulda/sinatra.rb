@@ -16,7 +16,8 @@ module Thumblemonks
         end
       
         def should_have_response_body(expected)
-          should("have response body") { assert_response_body expected }
+          name = expected.is_a?(String) ? expected[0...15] : expected.to_s
+          should("have response body like #{name}") { assert_response_body expected }
         end
 
         def should_have_content_type(expected)

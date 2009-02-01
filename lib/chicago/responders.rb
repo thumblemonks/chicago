@@ -12,4 +12,4 @@ module Thumblemonks
   end # Sinatra
 end # Thumblemonks
 
-Sinatra::EventContext.instance_eval { include Thumblemonks::Sinatra::Responders }
+Sinatra::Base.instance_eval { include Thumblemonks::Sinatra::Responders }
