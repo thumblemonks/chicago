@@ -15,6 +15,16 @@ In your Sinatra app, do this:
 
 And you'll get some helpful Sinatra extensions and helpers.
 
+If you're Sinatra app is considered modular - as in, you are not using the `Sinatra::Default` app - you will want to add the following in your app:
+
+    YourApp < Sinatra::Base
+      register Sinatra::ThumbleMonks::Base      # for some DSL helpers
+      helpers Sinatra::ThumbleMonks::Helpers    # for standard helpers
+      helpers Sinatra::ThumbleMonks::Responders # for JSON assistance
+    end
+
+You don't necessarily need all of them. You just need to "include" the statements that mix-in the functionality you want.
+
 ### Sinatra testing
 
 If you're using Shoulda in your tests of your Sinatra app, do this:
