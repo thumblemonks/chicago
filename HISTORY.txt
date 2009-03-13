@@ -1,0 +1,8 @@
+0.2
+
+* Updated to work with the latest Sinatra (0.9.1) and use proper extension nomenclature
+* Fixed catch_all_css to punt on stylesheets that are not defined as SASS files
+
+0.1.2.4
+
+* Updated to work with Sinatra 0.9

@@ -1,5 +1,5 @@
-module Thumblemonks
-  module Sinatra
+module Sinatra
+  module ThumbleMonks
     module Helpers
       # A basic anchor (link_to) tag
       #
@@ -71,7 +71,7 @@ module Thumblemonks
         options.map {|k,v| "#{k}=\"#{v}\""}.join(' ')
       end
     end # Helpers
-  end # Sinatra
-end # Thumblemonks
+  end # ThumbleMonks
 
-Sinatra::Base.instance_eval { include Thumblemonks::Sinatra::Helpers }
+  helpers ThumbleMonks::Helpers
+end # Sinatra

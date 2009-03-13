@@ -1,5 +1,5 @@
-module Thumblemonks
-  module Sinatra
+module Sinatra
+  module ThumbleMonks
     module Base
 
       # Assumes all CSS is SASS and is referenced as being in a directory named stylesheets
@@ -19,8 +19,7 @@ module Thumblemonks
       end
 
     end # Base
+  end # ThumbleMonks
 
-  end # Sinatra
-end # Thumblemonks
-
-Sinatra::Base.extend(Thumblemonks::Sinatra::Base)
+  register ThumbleMonks::Base
+end # Sinatra

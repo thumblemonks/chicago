@@ -1,5 +1,5 @@
-module Thumblemonks
-  module Sinatra
+module Sinatra
+  module Thumblemonks
     module Responders
 
       # Returns a JSON response for an object
@@ -9,7 +9,7 @@ module Thumblemonks
       end
 
     end # Responders
-  end # Sinatra
-end # Thumblemonks
+  end # Thumblemonks
 
-Sinatra::Base.instance_eval { include Thumblemonks::Sinatra::Responders }
+  helpers Thumblemonks::Responders
+end # Sinatra

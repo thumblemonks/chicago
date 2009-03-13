@@ -1,7 +1,7 @@
 require 'json'
 require 'ostruct'
 
-module Thumblemonks
+module ThumbleMonks
   module Shoulda
     module Sinatra
 
@@ -66,6 +66,6 @@ module Thumblemonks
 
     end # Sinatra
   end # Shoulda
-end # Thumblemonks
+end # ThumbleMonks
 
-Test::Unit::TestCase.instance_eval { include Thumblemonks::Shoulda::Sinatra }
+Test::Unit::TestCase.instance_eval { include ThumbleMonks::Shoulda::Sinatra }
