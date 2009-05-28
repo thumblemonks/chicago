@@ -42,7 +42,7 @@ class ApplicationTest < Test::Unit::TestCase
       end
 
       should_have_response_status 404
-      should_have_content_type 'text/css'
+      should_have_content_type 'text/html'
     end
   end # catching all css
 

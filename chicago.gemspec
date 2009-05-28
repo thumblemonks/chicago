@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name     = "chicago"
-  s.version  = "0.2.1"
-  s.date     = "2009-04-07"
+  s.version  = "0.2.2"
+  s.date     = "2009-05-28"
   s.summary  = "Sinatra runtime and testing extensions used commonly by Thumblemonks"
   s.email    = %w[gus@gusg.us gabriel.gironda@gmail.com]
   s.homepage = "http://github.com/thumblemonks/chicago/tree/master"

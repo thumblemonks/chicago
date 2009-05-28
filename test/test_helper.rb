@@ -1,6 +1,7 @@
 require 'rubygems'
 
 require 'haml'
+require 'sass'
 require 'sinatra'
 require 'test/unit'
 require 'sinatra/test'
