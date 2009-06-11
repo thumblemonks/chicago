@@ -2,14 +2,18 @@ require File.join(File.dirname(__FILE__), 'test_helper')
 
 class RespondersTest < Test::Unit::TestCase
 
+  def app
+    mock_app {
+      helpers Sinatra::Chicago::Responders
+      get "/json_bait" do
+        status(201)
+        json_response({:foo => "bar"})
+      end
+    }
+  end
+
   context "json response" do
     setup do
-      mock_app {
-        get "/json_bait" do
-          status(201)
-          json_response({:foo => "bar"})
-        end
-      }
       get "/json_bait"
     end
 

@@ -1,6 +1,5 @@
 module Sinatra
-  module ThumbleMonks
-    module Base
+  module Chicago
 
       # Assumes all CSS is SASS and is referenced as being in a directory named stylesheets
       # If SASS file is not defined, the route will passed on to - theoretically - the real
@@ -23,8 +22,7 @@ module Sinatra
         end
       end
 
-    end # Base
-  end # ThumbleMonks
+  end # Chicago
 
-  register ThumbleMonks::Base
+  register Chicago
 end # Sinatra

@@ -1,10 +1,16 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
 class HelpersTest < Test::Unit::TestCase
+  def app
+    mock_app {
+      helpers Sinatra::Chicago::Helpers
+    }
+  end
+
   context "including stylesheet" do
     context "for plain old foo" do
       setup do
-        mock_app {
+        extend_mock_app {
           template(:foo) { "= stylesheet_include('foo')" }
           get('/foo') { haml :foo }
         }
@@ -20,7 +26,7 @@ class HelpersTest < Test::Unit::TestCase
 
     context "for bar with options" do
       setup do
-        mock_app {
+        extend_mock_app {
           template(:foo) { "= stylesheet_include('bar', :media => 'print', :baz => 'boo')" }
           get('/foo') { haml :foo }
         }
@@ -37,7 +43,7 @@ class HelpersTest < Test::Unit::TestCase
 
     context "with a specific href" do
       setup do
-        mock_app {
+        extend_mock_app {
           template(:foo) { "= stylesheet_include('http://example.com')" }
           get('/foo') { haml :foo }
         }
@@ -50,7 +56,7 @@ class HelpersTest < Test::Unit::TestCase
   context "including javascript" do
     context "for plain old foo" do
       setup do
-        mock_app {
+        extend_mock_app {
           template(:foo) { "= javascript_include('foo')" }
           get('/foo') { haml :foo }
         }
@@ -64,7 +70,7 @@ class HelpersTest < Test::Unit::TestCase
 
     context "for foo with options" do
       setup do
-        mock_app {
+        extend_mock_app {
           template(:foo) { "= javascript_include('foo', :type => 'text/blarg', :gus => 'nice')" }
           get('/foo') { haml :foo }
         }
@@ -79,7 +85,7 @@ class HelpersTest < Test::Unit::TestCase
 
     context "with a specific src" do
       setup do
-        mock_app {
+        extend_mock_app {
           template(:foo) { "= javascript_include('http://example.com')" }
           get('/foo') { haml :foo }
         }
@@ -92,7 +98,7 @@ class HelpersTest < Test::Unit::TestCase
   context "using an anchor" do
     context "for plain old foo" do
       setup do
-        mock_app {
+        extend_mock_app {
           template(:foo) { "= anchor('foo', '/bar')" }
           get('/foo') { haml :foo }
         }
@@ -104,7 +110,7 @@ class HelpersTest < Test::Unit::TestCase
 
     context "with options" do
       setup do
-        mock_app {
+        extend_mock_app {
           template(:foo) { "= anchor('foo bear', '/bar/ler', :title => 'gus is nice')" }
           get('/foo') { haml :foo }
         }

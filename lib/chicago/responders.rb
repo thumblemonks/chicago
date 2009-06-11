@@ -1,5 +1,5 @@
 module Sinatra
-  module Thumblemonks
+  module Chicago
     module Responders
 
       # Returns a JSON response for an object
@@ -9,7 +9,7 @@ module Sinatra
       end
 
     end # Responders
-  end # Thumblemonks
+  end # Chicago
 
-  helpers Thumblemonks::Responders
+  helpers Chicago::Responders
 end # Sinatra

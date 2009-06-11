@@ -1,5 +1,5 @@
 module Sinatra
-  module ThumbleMonks
+  module Chicago
     module Helpers
       # A basic anchor (link_to) tag
       #
@@ -71,7 +71,7 @@ module Sinatra
         options.map {|k,v| "#{k}=\"#{v}\""}.join(' ')
       end
     end # Helpers
-  end # ThumbleMonks
+  end # Chicago
 
-  helpers ThumbleMonks::Helpers
+  helpers Chicago::Helpers
 end # Sinatra

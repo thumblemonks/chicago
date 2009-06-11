@@ -2,8 +2,8 @@ require 'json'
 require 'ostruct'
 
 module ThumbleMonks
-  module Shoulda
-    module Sinatra
+  module Chicago
+    module Shoulda
 
       def self.included(klass)
         klass.extend(Macros)
@@ -52,15 +52,15 @@ module ThumbleMonks
         end
 
         def assert_response(status)
-          assert_equal status, @response.status
+          assert_equal status, last_response.status
         end
 
         def assert_response_body(body)
-          assert_match body, @response.body
+          assert_match body, last_response.body
         end
 
         def assert_content_type(expected)
-          assert_equal expected, @response.headers['Content-type']
+          assert_equal expected, last_response.headers['Content-type']
         end
 
         # Usage:
@@ -72,12 +72,12 @@ module ThumbleMonks
           yield if block_given?
           assert_response 302
           action = expected_path.kind_of?(Regexp) ? 'match' : 'equal'
-          send("assert_#{action}", expected_path, @response.headers["Location"])
+          send("assert_#{action}", expected_path, last_response.headers["Location"])
         end
       end # Helpers
 
-    end # Sinatra
-  end # Shoulda
+    end # Shoulda
+  end # Chicago
 end # ThumbleMonks
 
-Test::Unit::TestCase.instance_eval { include ThumbleMonks::Shoulda::Sinatra }
+Test::Unit::TestCase.instance_eval { include ThumbleMonks::Chicago::Shoulda }
