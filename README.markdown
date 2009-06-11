@@ -31,7 +31,7 @@ Assuming you have required 'rack/test', like so:
 
     require 'rack/test'
 
-If you're using Shoulda in your tests of your Sinatra app, do this:
+This is because these macros use last_request defined by the Rack/Test library. If you're using Shoulda in your tests of your Sinatra app, do this:
 
     require 'chicago/shoulda'
 
