@@ -38,7 +38,7 @@ module ThumbleMonks
         # Example:
         #   should_be_redirected_to { "/users/@user.id" }
         #   should_be_redirected_to "/home"
-        def self.should_be_redirected_to(expected_path=nil, &block)
+        def should_be_redirected_to(expected_path=nil, &block)
           should "be redirected to #{expected_path || 'a url'}" do
             expected_path = self.instance_eval(&block) if block_given?
             assert_redirected_to expected_path
