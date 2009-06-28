@@ -1,0 +1,1 @@
+require 'chicago/protest/macros'

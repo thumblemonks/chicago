@@ -1,4 +1,4 @@
-%w[ rubygems haml sass chicago test/unit rack/test shoulda chicago/shoulda ].each do |lib|
+%w[ rubygems protest haml sass chicago rack/test chicago/protest ].each do |lib|
   require lib
 end
 
@@ -14,8 +14,12 @@ module Rack::Test::Methods
     @_rack_test_session ||= Rack::Test::Session.new(app)
     @app.instance_eval(&block)
   end
+
+  def app
+    @app
+  end
 end
 
-class Test::Unit::TestCase
+class Protest::Context
   include Rack::Test::Methods
 end

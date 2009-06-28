@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), 'test_helper')
 
-class HelpersTest < Test::Unit::TestCase
-  def app
+context "HelpersTest:" do
+  setup do
     mock_app {
       helpers Sinatra::Chicago::Helpers
     }
@@ -17,11 +17,11 @@ class HelpersTest < Test::Unit::TestCase
         get '/foo'
       end
 
-      should_have_response_body %r[^<link( \w+=".+"){4}/>$]
-      should_have_response_body %r[href="/stylesheets/foo\.css"]
-      should_have_response_body %r[media="screen"]
-      should_have_response_body %r[rel="stylesheet"]
-      should_have_response_body %r[type="text/css"]
+      asserts_response_body %r[^<link( \w+=".+"){4}/>$]
+      asserts_response_body %r[href="/stylesheets/foo\.css"]
+      asserts_response_body %r[media="screen"]
+      asserts_response_body %r[rel="stylesheet"]
+      asserts_response_body %r[type="text/css"]
     end # for plain old foo
 
     context "for bar with options" do
@@ -33,12 +33,12 @@ class HelpersTest < Test::Unit::TestCase
         get '/foo'
       end
 
-      should_have_response_body %r[^<link( \w+=".+"){5}/>$]
-      should_have_response_body %r[href="/stylesheets/bar\.css"]
-      should_have_response_body %r[media="print"]
-      should_have_response_body %r[rel="stylesheet"]
-      should_have_response_body %r[type="text/css"]
-      should_have_response_body %r[baz="boo"]
+      asserts_response_body %r[^<link( \w+=".+"){5}/>$]
+      asserts_response_body %r[href="/stylesheets/bar\.css"]
+      asserts_response_body %r[media="print"]
+      asserts_response_body %r[rel="stylesheet"]
+      asserts_response_body %r[type="text/css"]
+      asserts_response_body %r[baz="boo"]
     end # for bar with options
 
     context "with a specific href" do
@@ -49,7 +49,7 @@ class HelpersTest < Test::Unit::TestCase
         }
         get '/foo'
       end
-      should_have_response_body %r[href="http://example.com"]
+      asserts_response_body %r[href="http://example.com"]
     end # with a specific href
   end # including stylesheets
 
@@ -63,9 +63,9 @@ class HelpersTest < Test::Unit::TestCase
         get '/foo'
       end
 
-      should_have_response_body %r[^<script( \w+=".+"){2}></script>$]
-      should_have_response_body %r[src="/javascripts/foo\.js"]
-      should_have_response_body %r[type="text/javascript"]
+      asserts_response_body %r[^<script( \w+=".+"){2}></script>$]
+      asserts_response_body %r[src="/javascripts/foo\.js"]
+      asserts_response_body %r[type="text/javascript"]
     end # for plain old foo
 
     context "for foo with options" do
@@ -77,10 +77,10 @@ class HelpersTest < Test::Unit::TestCase
         get '/foo'
       end
 
-      should_have_response_body %r[^<script( \w+=".+"){3}></script>$]
-      should_have_response_body %r[src="/javascripts/foo\.js"]
-      should_have_response_body %r[type="text/blarg"]
-      should_have_response_body %r[gus="nice"]
+      asserts_response_body %r[^<script( \w+=".+"){3}></script>$]
+      asserts_response_body %r[src="/javascripts/foo\.js"]
+      asserts_response_body %r[type="text/blarg"]
+      asserts_response_body %r[gus="nice"]
     end # for foo with options
 
     context "with a specific src" do
@@ -91,7 +91,7 @@ class HelpersTest < Test::Unit::TestCase
         }
         get '/foo'
       end
-      should_have_response_body %r[src="http://example.com"]
+      asserts_response_body %r[src="http://example.com"]
     end # with a specific src
   end # including javascript
 
@@ -105,7 +105,7 @@ class HelpersTest < Test::Unit::TestCase
         get '/foo'
       end
 
-      should_have_response_body %Q[<a href="/bar">foo</a>]
+      asserts_response_body %Q[<a href="/bar">foo</a>]
     end # for plain old foo
 
     context "with options" do
@@ -117,9 +117,9 @@ class HelpersTest < Test::Unit::TestCase
         get '/foo'
       end
 
-      should_have_response_body %r[^<a( \w+=".+"){2}>foo bear</a>$]
-      should_have_response_body %r[href="/bar/ler"]
-      should_have_response_body %r[title="gus is nice"]
+      asserts_response_body %r[^<a( \w+=".+"){2}>foo bear</a>$]
+      asserts_response_body %r[href="/bar/ler"]
+      asserts_response_body %r[title="gus is nice"]
     end # with options
   end # using an anchor
 end

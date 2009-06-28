@@ -22,6 +22,8 @@ Gem::Specification.new do |s|
     lib/chicago.rb
     lib/chicago/application.rb
     lib/chicago/helpers.rb
+    lib/chicago/protest.rb
+    lib/chicago/protest/macros.rb
     lib/chicago/responders.rb
     lib/chicago/shoulda.rb
     lib/chicago/shoulda/sinatra.rb
