@@ -27,6 +27,19 @@ module Chicago
         end
       end
 
+      # Usage:
+      #   assert_redirected_to '/foo/bar'
+      def asserts_redirected_to(expected_path)
+        asserts_response_status 302
+        asserts_location expected_path
+        # TODO: implement a matches operator
+        # action = expected_path.kind_of?(Regexp) ? 'match' : 'equal'
+        # send("assert_#{action}", expected_path, last_response.headers["Location"])
+      end
+
+      def asserts_location(expected_path)
+        asserts("location header").equals(expected_path) { last_response.headers["Location"] }
+      end
     end # Macros
   end # Protest
 end # Chicago

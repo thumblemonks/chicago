@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = "chicago"
-  s.version  = "0.3.2"
+  s.version  = "0.3.2.1"
   s.date     = "2009-06-28"
   s.summary  = "Sinatra runtime and testing extensions used commonly by Thumblemonks"
   s.email    = %w[gus@gusg.us gabriel.gironda@gmail.com]
@@ -10,14 +10,12 @@ Gem::Specification.new do |s|
 
   s.has_rdoc = false
   s.rdoc_options = ["--main", "README.markdown"]
-  s.extra_rdoc_files = ["HISTORY.txt", "README.markdown"]
+  s.extra_rdoc_files = ["README.markdown"]
 
   # run git ls-files to get an updated list
   s.files = %w[
-    HISTORY.txt
     MIT-LICENSE
     README.markdown
-    Rakefile
     chicago.gemspec
     lib/chicago.rb
     lib/chicago/application.rb
@@ -30,8 +28,10 @@ Gem::Specification.new do |s|
   ]
   
   s.test_files = %w[
+    Rakefile
     test/application_test.rb
     test/helpers_test.rb
+    test/protest_macros_test.rb
     test/responders_test.rb
     test/test_helper.rb
   ]

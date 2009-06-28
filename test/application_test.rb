@@ -1,6 +1,6 @@
-require File.join(File.dirname(__FILE__), 'test_helper')
+require 'test_helper'
 
-context "ApplicationTest:" do
+context "Application Test:" do
 
   setup do
     mock_app {
@@ -20,30 +20,21 @@ context "ApplicationTest:" do
   # TODO: change to namespace
   context "catching all css" do
     context "with default path" do
-      setup do
-        get '/stylesheets/foo.css'
-      end
-
+      setup { get '/stylesheets/foo.css' }
       asserts_response_status 200
       asserts_content_type 'text/css'
       asserts_response_body %r[.bar \{\s+display: none; \}\s]
     end
 
     context "with specified path" do
-      setup do
-        get '/css/goo.css'
-      end
-
+      setup { get '/css/goo.css' }
       asserts_response_status 200
       asserts_content_type 'text/css'
       asserts_response_body %r[.car \{\s+display: some; \}\s]
     end
 
     context "with path that's not a defined a sass file" do
-      setup do
-        get '/stylesheets/zoo.css'
-      end
-
+      setup { get '/stylesheets/zoo.css' }
       asserts_response_status 404
       asserts_content_type 'text/html'
     end

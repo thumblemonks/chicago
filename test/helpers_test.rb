@@ -1,6 +1,6 @@
-require File.join(File.dirname(__FILE__), 'test_helper')
+require 'test_helper'
 
-context "HelpersTest:" do
+context "Helpers Test:" do
   setup do
     mock_app {
       helpers Sinatra::Chicago::Helpers

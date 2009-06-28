@@ -1,7 +1,6 @@
-require File.join(File.dirname(__FILE__), 'test_helper')
+require 'test_helper'
 
-context "RespondersTest" do
-
+context "Responders Test:" do
   setup do
     mock_app {
       helpers Sinatra::Chicago::Responders
@@ -13,12 +12,8 @@ context "RespondersTest" do
   end
 
   context "json response" do
-    setup do
-      get "/json_bait"
-    end
-
+    setup { get "/json_bait" }
     asserts_response_status 201
     asserts_json_response({:foo => :bar})
   end # json response
-
 end
