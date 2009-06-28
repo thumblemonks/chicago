@@ -31,7 +31,13 @@ Assuming you have required 'rack/test', like so:
 
     require 'rack/test'
 
-This is because these macros use last_request defined by the Rack/Test library. If you're using Shoulda in your tests of your Sinatra app, do this:
+This is because these macros use last_request defined by the Rack/Test library. If you're using [Protest](http://github.com/thumblemonks/protest) in your tests of your Sinatra app, do this:
+
+    require 'chicago/protest'
+
+... and you'll get a bunch of cool Protest macros for testing specific Sinatra stuff.
+
+If you're using Shoulda in your tests of your Sinatra app, do this:
 
     require 'chicago/shoulda'
 
