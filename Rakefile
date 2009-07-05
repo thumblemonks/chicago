@@ -15,7 +15,7 @@ task :test => [:set_test_env, :environment] do
   require 'protest'
   $:.concat ['./lib', './test']
   Dir.glob("./test/*_test.rb").each { |test| require test }
-  Protest.run
+  Protest.report
 end
 
 desc "Open an irb session preloaded with this library"
