@@ -8,12 +8,21 @@ class RespondersTest < Test::Unit::TestCase
         status(201)
         json_response({:foo => "bar"})
       end
+
+      get "/no_bait" do
+        status(200)
+        json_response(nil)
+      end
     }
   end
 
   context "json response" do
     setup { get "/json_bait" }
-    should_have_response_status 201
     should_have_json_response({:foo => :bar})
+  end # json response
+
+  context "json response with null data" do
+    setup { get "/no_bait" }
+    should_have_json_response(/^$/)
   end # json response
 end
