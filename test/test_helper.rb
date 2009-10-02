@@ -20,6 +20,6 @@ module Rack::Test::Methods
   end
 end
 
-class Protest::Context
+class Protest::Situation
   include Rack::Test::Methods
 end

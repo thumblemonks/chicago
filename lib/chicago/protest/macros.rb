@@ -26,7 +26,9 @@ module Chicago
         asserts("response body has JSON") do
           json = json.to_json unless json.instance_of?(String)
           json
-        end.equals(last_response.body)
+        end.equals(situation.last_response.body)
+        # Calling situation is kind of yucky, but maybe not. The maybe not is because of how explicit it is
+        # to say "situation" (gus)
       end
 
       # Usage:
