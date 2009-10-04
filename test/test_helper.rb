@@ -1,4 +1,4 @@
-%w[ rubygems protest haml sass chicago rack/test chicago/protest ].each do |lib|
+%w[ rubygems riot haml sass chicago rack/test chicago/riot ].each do |lib|
   require lib
 end
 
@@ -20,6 +20,8 @@ module Rack::Test::Methods
   end
 end
 
-class Protest::Situation
+class Riot::Situation
   include Rack::Test::Methods
 end
+
+at_exit { Riot.report }

@@ -9,10 +9,8 @@ task(:set_test_env) { ENV['RACK_ENV'] ||= 'test' }
 
 desc "Run all tests"
 task :test => [:set_test_env] do
-  require 'protest'
   $:.concat ['./lib', './test']
   Dir.glob("./test/*_test.rb").each { |test| require test }
-  Protest.report
 end
 
 task "test:shoulda" => [:set_test_env]

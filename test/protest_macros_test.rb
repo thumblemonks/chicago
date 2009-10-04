@@ -1,6 +1,6 @@
 require 'test_helper'
 
-context "Protest Macros Test:" do
+context "Riot Macros Test:" do
   setup do
     mock_app {
       helpers Sinatra::Chicago::Responders

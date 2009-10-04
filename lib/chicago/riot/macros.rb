@@ -1,7 +1,7 @@
 require 'json'
 
 module Chicago
-  module Protest
+  module Riot
     module Macros
       def asserts_response_status(expected)
         asserts("response status is #{expected}") { last_response.status }.equals(expected)
@@ -39,7 +39,7 @@ module Chicago
         asserts_location expected_path
       end
     end # Macros
-  end # Protest
+  end # Riot
 end # Chicago
 
-Protest::Context.instance_eval { include Chicago::Protest::Macros }
+Riot::Context.instance_eval { include Chicago::Riot::Macros }
