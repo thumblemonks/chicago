@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.has_rdoc = true
   s.rdoc_options = ["--main", "README.markdown"]
   s.extra_rdoc_files = ["README.markdown"]
+  s.add_development_dependency "riot"
 
   # run git ls-files to get an updated list
   s.files = %w[

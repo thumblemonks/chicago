@@ -5,7 +5,19 @@
 
 Yeah, we're real clever. We're also from ["The city in mid-west best city in the whole wide wide world"](http://www.azlyrics.com/lyrics/lupefiasco/gogogadgetflow.html) ... which makes us double the clever.
 
-## What what?
+Chicago is a collection of runtime and test extensions and helpers that makes some common tasks a little bit easier.
+
+## Installation
+
+First, make sure GemCutter is added to your list of sources. If not, install it like so or just follow the instructions for installing the gemcutter gem:
+
+    sudo gem sources -a http://gemcutter.org
+
+Then, installing chicago is a quick gem install:
+
+    sudo gem install chicago
+
+## Usage
 
 ### Sinatra runtime app
 
@@ -31,9 +43,9 @@ Assuming you have required 'rack/test', like so:
 
     require 'rack/test'
 
-This is because these macros use last_request defined by the Rack/Test library. If you're using [Protest](http://github.com/thumblemonks/protest) in your tests of your Sinatra app, do this:
+This is because these macros use last_request defined by the Rack/Test library. If you're using [Riot](http://github.com/thumblemonks/riot) in your tests of your Sinatra app, do this:
 
-    require 'chicago/protest'
+    require 'chicago/riot'
 
 ... and you'll get a bunch of cool Protest macros for testing specific Sinatra stuff.
 

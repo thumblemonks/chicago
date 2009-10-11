@@ -23,5 +23,3 @@ end
 class Riot::Situation
   include Rack::Test::Methods
 end
-
-at_exit { Riot.report }
