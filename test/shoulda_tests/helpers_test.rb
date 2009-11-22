@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'shoulda_tests/test_helper'
 
 class HelpersTest < Test::Unit::TestCase
   def app

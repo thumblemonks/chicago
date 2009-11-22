@@ -1,11 +1,9 @@
-%w[ rubygems riot haml sass chicago sinatra/test chicago/riot ].each do |lib|
+%w[ rubygems riot haml sass chicago rack/test chicago/riot ].each do |lib|
   require lib
 end
 
 class Riot::Situation
-  include Sinatra::Test
-
-  alias_method :last_response, :response
+  include Rack::Test::Methods
 
   # Sets up a Sinatra::Base subclass defined with the block
   # given. Used in setup or individual spec methods to establish

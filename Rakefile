@@ -10,14 +10,14 @@ task(:set_test_env) { ENV['RACK_ENV'] ||= 'test' }
 desc "Run all tests"
 Rake::TestTask.new("test") do |t|
   t.libs.concat ['./lib', './test']
-  t.test_files = FileList['test/*_test.rb']
+  t.test_files = FileList['test/riot_tests/*_test.rb']
   t.verbose = true
 end
 
 task "test:shoulda" => [:set_test_env]
 desc "Run all Shoulda based tests"
 Rake::TestTask.new("test:shoulda") do |t|
-  t.libs << "test/shoulda_tests"
+  t.libs.concat ['./lib', './test']
   t.test_files = FileList['test/shoulda_tests/*_test.rb']
   t.verbose = true
 end

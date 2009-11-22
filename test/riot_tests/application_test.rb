@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'riot_tests/test_helper'
 
 context "Application Test:" do
 

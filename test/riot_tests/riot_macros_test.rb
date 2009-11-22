@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'riot_tests/test_helper'
 
 context "Riot Macros Test:" do
   setup do
