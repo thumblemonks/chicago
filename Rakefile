@@ -8,9 +8,10 @@ task :default => [:test]
 task(:set_test_env) { ENV['RACK_ENV'] ||= 'test' }
 
 desc "Run all tests"
-task :test => [:set_test_env] do
-  $:.concat ['./lib', './test']
-  Dir.glob("./test/*_test.rb").each { |test| require test }
+Rake::TestTask.new("test") do |t|
+  t.libs.concat ['./lib', './test']
+  t.test_files = FileList['test/*_test.rb']
+  t.verbose = true
 end
 
 task "test:shoulda" => [:set_test_env]

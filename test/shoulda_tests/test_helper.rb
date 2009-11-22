@@ -1,8 +1,8 @@
-%w[ rubygems test/unit shoulda haml sass chicago rack/test chicago/shoulda ].each do |lib|
+%w[ rubygems test/unit shoulda haml sass chicago sinatra/test chicago/shoulda ].each do |lib|
   require lib
 end
 
-module Rack::Test::Methods
+module Sinatra::Test
   # Sets up a Sinatra::Base subclass defined with the block
   # given. Used in setup or individual spec methods to establish
   # the application.
@@ -11,11 +11,12 @@ module Rack::Test::Methods
   end
 
   def extend_mock_app(&block)
-    @_rack_test_session ||= Rack::Test::Session.new(app)
     @app.instance_eval(&block)
   end
 end
 
 class Test::Unit::TestCase
-  include Rack::Test::Methods
+  include Sinatra::Test
+
+  alias_method :last_response, :response
 end

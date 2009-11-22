@@ -4,12 +4,12 @@ context "Riot Macros Test:" do
   setup do
     mock_app {
       helpers Sinatra::Chicago::Responders
-      get("/redirecter") { redirect '/foo/bar' }
+      get("/redirector") { redirect '/foo/bar' }
     }
   end
 
   context "asserts redirected to" do
-    setup { get('/redirecter') }
+    setup { get('/redirector') }
     asserts_redirected_to('/foo/bar')
   end # asserts redirected to
 end

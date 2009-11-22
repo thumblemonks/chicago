@@ -21,12 +21,15 @@ module Chicago
         end.matches(expected_path)
       end
 
-      def asserts_json_response(json, &block)
+      def asserts_json_response(json)
         asserts_content_type 'application/json'
+
+        json = json.to_json unless json.instance_of?(String)
+        json
+
         asserts("response body has JSON") do
-          json = json.to_json unless json.instance_of?(String)
-          json
-        end.equals(situation.last_response.body)
+          last_response.body
+        end.equals(json)
         # Calling situation is kind of yucky, but maybe not. The maybe not is because of how explicit it is
         # to say "situation" (gus)
       end
