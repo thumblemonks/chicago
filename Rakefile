@@ -22,11 +22,6 @@ Rake::TestTask.new("test:shoulda") do |t|
   t.verbose = true
 end
 
-# task :test => [:set_test_env] do
-#   $:.concat ['./lib', './test/shoulda_tests']
-#   Dir.glob("./test/shoulda_tests/*_test.rb").each { |test| require test }
-# end
-
 desc "Open an irb session preloaded with this library"
 task :console do
   exec "irb -rubygems"
