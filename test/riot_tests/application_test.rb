@@ -42,7 +42,7 @@ context "Application Test:" do
 
   context "getting obvious views" do
     setup { get '/baz' }
-    asserts_response_body "Whatever man. That's just like, your opinion."
+    asserts_response_body "Whatever man. That's just like, your opinion.\n"
   end # getting obvious views
 
 end

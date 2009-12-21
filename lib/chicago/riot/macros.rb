@@ -12,7 +12,11 @@ module Chicago
       end
 
       def asserts_response_body(expected)
-        asserts("response body matches #{expected.inspect}") { last_response.body }.matches(expected)
+        if (expected.kind_of?(Regexp))
+          asserts("response body matches #{expected.inspect}") { last_response.body }.matches(expected)
+        else
+          asserts("response body is exactly #{expected.inspect}") { last_response.body }.equals(expected)
+        end
       end
 
       def asserts_location(expected_path)

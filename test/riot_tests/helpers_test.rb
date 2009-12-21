@@ -105,7 +105,7 @@ context "Helpers Test:" do
         get '/foo'
       end
 
-      asserts_response_body %Q[<a href="/bar">foo</a>]
+      asserts_response_body %Q[<a href="/bar">foo</a>\n]
     end # for plain old foo
 
     context "with options" do
