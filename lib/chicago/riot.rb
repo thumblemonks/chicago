@@ -1,5 +1,6 @@
-require 'chicago/riot/macros'
 require 'rack/test'
+require 'riot'
+require 'chicago/riot/macros'
 
 class Riot::Situation
   include Rack::Test::Methods

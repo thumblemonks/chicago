@@ -1,4 +1,4 @@
-%w[ rubygems riot haml sass chicago rack/test chicago/riot ].each do |lib|
+%w[ rubygems haml sass chicago chicago/riot ].each do |lib|
   require lib
 end
 
