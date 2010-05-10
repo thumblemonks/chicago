@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{chicago}
-  s.version = "0.3.9"
+  s.version = "0.3.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Justin 'Gus' Knowlden"]
-  s.date = %q{2009-12-21}
+  s.date = %q{2010-05-10}
   s.description = %q{Sinatra runtime and testing extensions used commonly by Thumblemonks. For example, :json_response, which turns an object into JSON and sets the content-type appropriately.}
   s.email = %q{gus@gusg.us}
   s.extra_rdoc_files = [
@@ -43,7 +43,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/thumblemonks/chicago}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Sinatra runtime and testing extensions used commonly by Thumblemonks}
   s.test_files = [
     "test/riot_tests/application_test.rb",
