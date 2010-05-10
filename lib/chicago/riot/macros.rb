@@ -25,8 +25,10 @@ module Chicago
         end.matches(expected_path)
       end
 
-      def asserts_json_response(json)
-        asserts_content_type 'application/json'
+      def asserts_json_response(*args)
+        content_type = args.length > 1 ? args.shift : 'application/json'
+        json = args.shift
+        asserts_content_type content_type
 
         json = json.to_json unless json.instance_of?(String)
         json
