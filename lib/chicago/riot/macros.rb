@@ -25,19 +25,21 @@ module Chicago
         end.matches(expected_path)
       end
 
-      def asserts_json_response(*args)
-        content_type = args.length > 1 ? args.shift : 'application/json'
-        json = args.shift
-        asserts_content_type content_type
+      # Usage:
+      #   asserts_json_response({"foo" => "bar"})
+      #   asserts_json_response('{"foo":"bar"}')
+      #   asserts_json_response("text/javascript;charset=utf-8", {"foo" => "bar"})
+      #   asserts_json_response { {"foo" => @some_value} }
+      #   asserts_json_response("text/javascript;charset=utf-8") { {"foo" => @some_value} }
+      def asserts_json_response(*args, &block)
+        json = block_given? ? instance_eval(&block) : args.pop
 
         json = json.to_json unless json.instance_of?(String)
-        json
-
         asserts("response body has JSON") do
           last_response.body
         end.equals(json)
-        # Calling situation is kind of yucky, but maybe not. The maybe not is because of how explicit it is
-        # to say "situation" (gus)
+
+        asserts_content_type(args.empty? ? 'application/json' : args.shift)
       end
 
       # Usage:

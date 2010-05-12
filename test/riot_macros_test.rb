@@ -23,13 +23,20 @@ context "Riot Macros Test:" do
     asserts_redirected_to('/foo/bar')
   end # asserts redirected to
 
-  context "basic json response" do
-    setup { get('/basic-json') }
-    asserts_json_response({:foo => "bar"})
-  end # asserts redirected to
+  context "json response" do
+    context "basic" do
+      setup { get('/basic-json') }
+      asserts_json_response({:foo => "bar"})
+    end # basic
 
-  context "json response with special content-type" do
-    setup { get('/json-with-content-type') }
-    asserts_json_response("text/javascript;charset=utf-8", {:foo => "bar"})
-  end # asserts redirected to
+    context "with special content-type" do
+      setup { get('/json-with-content-type') }
+      asserts_json_response("text/javascript;charset=utf-8", {:foo => "bar"})
+    end # with special content-type
+
+    context "with content expectation provided as block" do
+      setup { get('/json-with-content-type') }
+      asserts_json_response("text/javascript;charset=utf-8") { {:foo => "bar"} }
+    end # with special content-type
+  end # json response
 end
