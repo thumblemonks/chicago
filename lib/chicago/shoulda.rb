@@ -1,1 +1,0 @@
-require 'chicago/shoulda/sinatra'
