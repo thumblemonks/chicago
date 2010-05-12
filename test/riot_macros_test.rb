@@ -35,8 +35,9 @@ context "Riot Macros Test:" do
     end # with special content-type
 
     context "with content expectation provided as block" do
+      helper(:bar_value) { "bar" }
       setup { get('/json-with-content-type') }
-      asserts_json_response("text/javascript;charset=utf-8") { {:foo => "bar"} }
-    end # with special content-type
+      asserts_json_response("text/javascript;charset=utf-8") { {:foo => bar_value}.to_json }
+    end # with content expectation provided as block
   end # json response
 end

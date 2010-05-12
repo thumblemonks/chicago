@@ -29,15 +29,14 @@ module Chicago
       #   asserts_json_response({"foo" => "bar"})
       #   asserts_json_response('{"foo":"bar"}')
       #   asserts_json_response("text/javascript;charset=utf-8", {"foo" => "bar"})
-      #   asserts_json_response { {"foo" => @some_value} }
-      #   asserts_json_response("text/javascript;charset=utf-8") { {"foo" => @some_value} }
+      #   asserts_json_response { {"foo" => @some_value}.to_json }
+      #   asserts_json_response("text/javascript;charset=utf-8") { {"foo" => @some_value}.to_json }
       def asserts_json_response(*args, &block)
-        json = block_given? ? instance_eval(&block) : args.pop
-
-        json = json.to_json unless json.instance_of?(String)
-        asserts("response body has JSON") do
-          last_response.body
-        end.equals(json)
+        unless block_given?
+          json = args.pop
+          json = json.to_json unless json.instance_of?(String)
+        end
+        asserts("response body has JSON") { last_response.body }.equals(&(block || lambda {json}))
 
         asserts_content_type(args.empty? ? 'application/json' : args.shift)
       end
