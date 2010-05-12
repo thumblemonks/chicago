@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{chicago}
-  s.version = "0.3.10"
+  s.version = "0.3.11"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Justin 'Gus' Knowlden"]
-  s.date = %q{2010-05-10}
+  s.date = %q{2010-05-12}
   s.description = %q{Sinatra runtime and testing extensions used commonly by Thumblemonks. For example, :json_response, which turns an object into JSON and sets the content-type appropriately.}
   s.email = %q{gus@gusg.us}
   s.extra_rdoc_files = [
@@ -28,17 +28,11 @@ Gem::Specification.new do |s|
      "lib/chicago/responders.rb",
      "lib/chicago/riot.rb",
      "lib/chicago/riot/macros.rb",
-     "lib/chicago/shoulda.rb",
-     "lib/chicago/shoulda/sinatra.rb",
-     "test/riot_tests/application_test.rb",
-     "test/riot_tests/helpers_test.rb",
-     "test/riot_tests/responders_test.rb",
-     "test/riot_tests/riot_macros_test.rb",
-     "test/riot_tests/test_helper.rb",
-     "test/shoulda_tests/application_test.rb",
-     "test/shoulda_tests/helpers_test.rb",
-     "test/shoulda_tests/responders_test.rb",
-     "test/shoulda_tests/test_helper.rb"
+     "test/application_test.rb",
+     "test/helpers_test.rb",
+     "test/responders_test.rb",
+     "test/riot_macros_test.rb",
+     "test/teststrap.rb"
   ]
   s.homepage = %q{http://github.com/thumblemonks/chicago}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -46,15 +40,11 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Sinatra runtime and testing extensions used commonly by Thumblemonks}
   s.test_files = [
-    "test/riot_tests/application_test.rb",
-     "test/riot_tests/helpers_test.rb",
-     "test/riot_tests/responders_test.rb",
-     "test/riot_tests/riot_macros_test.rb",
-     "test/riot_tests/test_helper.rb",
-     "test/shoulda_tests/application_test.rb",
-     "test/shoulda_tests/helpers_test.rb",
-     "test/shoulda_tests/responders_test.rb",
-     "test/shoulda_tests/test_helper.rb"
+    "test/application_test.rb",
+     "test/helpers_test.rb",
+     "test/responders_test.rb",
+     "test/riot_macros_test.rb",
+     "test/teststrap.rb"
   ]
 
   if s.respond_to? :specification_version then
