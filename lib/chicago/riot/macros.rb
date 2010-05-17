@@ -3,6 +3,14 @@ require 'json'
 module Chicago
   module Riot
     module Macros
+      def asserts_response(method=nil)
+        if method
+          asserts("response #{method}") { last_response.send(method) }
+        else
+          asserts("response") { last_response }
+        end
+      end
+
       def asserts_response_status(expected)
         asserts("response status is #{expected}") { last_response.status }.equals(expected)
       end

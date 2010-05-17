@@ -40,4 +40,13 @@ context "Riot Macros Test:" do
       asserts_json_response("text/javascript;charset=utf-8") { {:foo => bar_value}.to_json }
     end # with content expectation provided as block
   end # json response
+
+  context "response body" do
+    context "with a block for the expected value" do
+      setup { get('/basic-json') }
+      asserts_response(:body).equals do
+        {:foo => "bar"}.to_json
+      end
+    end # with a block for the expected value
+  end # response body
 end
