@@ -1,0 +1,22 @@
+PATH
+  remote: .
+  specs:
+    chicago (0.3.13)
+      rack-test
+      riot
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    rack (1.4.1)
+    rack-test (0.6.1)
+      rack (>= 1.0)
+    riot (0.12.5)
+      rr
+    rr (1.0.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  chicago!

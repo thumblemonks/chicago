@@ -46,7 +46,7 @@ module Chicago
         end
         asserts("response body has JSON") { last_response.body }.equals(&(block || lambda {json}))
 
-        asserts_content_type(args.empty? ? 'application/json' : args.shift)
+        asserts_content_type(args.empty? ? 'application/json;charset=utf-8' : args.shift)
       end
 
       # Usage:
